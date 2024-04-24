@@ -1,0 +1,253 @@
+﻿<Page x:Name="Main" x:Class="Radar.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ScottPlot="clr-namespace:ScottPlot;assembly=ScottPlot.WPF"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="MainPage" MinHeight="600" MinWidth="800">
+
+    <DockPanel x:Name="Main_Panel" >
+
+        <Grid x:Name="Radar_Grid" Background="Black" DockPanel.Dock="Right" Width="1000" Panel.ZIndex="5">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="800"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="800"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="RadarControls" Grid.Row="0" Grid.Column="0" Background="White">
+                <Button x:Name="SetRadarWindowSourceButton" Height="100" VerticalAlignment="Top" Click="SetRadarWindowSourceButton_Clicked" Background="BlanchedAlmond">
+                    <TextBlock x:Name="SetRadarWindowSourceButtonText" Text="Change Radar Window Source" TextWrapping="Wrap" FontSize="20" TextAlignment="Center"/>
+                </Button>
+                <Button x:Name="DeleteShipButton" Height="100" VerticalAlignment="Top" Click="DeleteShipButton_Click" Background="BlanchedAlmond">
+                    <TextBlock x:Name="DeleteShipButtonText" Text="Delete Ship" TextWrapping="Wrap" FontSize="20" TextAlignment="Center"/>
+                </Button>
+                <Button x:Name="RangePlusButton" Height="100" VerticalAlignment="Top" Click="RangePlus_Clicked" Background="BlanchedAlmond">
+                    <TextBlock x:Name="RangePlusText" Text="Range +" TextWrapping="Wrap" FontSize="28" TextAlignment="Center"/>
+                </Button>
+                <TextBlock x:Name="RangeTextBlock" Height="100" Text="Nm" TextAlignment="Center" Padding="25" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Background="White"/>
+                <Button x:Name="RangeMinusButton" Height="100" VerticalAlignment="Top" Click="RangeMinus_Clicked" Background="BlanchedAlmond">
+                    <TextBlock x:Name="RangeMinusText" Text="Range -" TextWrapping="Wrap" FontSize="28" TextAlignment="Center"/>
+                </Button>
+
+            </StackPanel>
+
+            <Grid x:Name="RadarMap" Grid.Row="0" Grid.Column="1" >
+                <ScottPlot:WpfPlot x:Name="plt"/>
+            </Grid>
+
+            <Grid x:Name="RadarData" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="FirstObjectData" Grid.Column="0" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="FirstObjectDataDockPanel" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="10,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="FirstObjectsInfoText" Content="Object - ID "  Padding="0" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="FirstObjectsShortHeadingText" Content="Heading 1: "  Padding="0" Grid.Row="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="FirstObjectsShortSpeedText" Content="Speed 1: "  Padding="0" Grid.Row="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="FirstObjectsShortTCPAText" Content="TCPA 1: "  Padding="0" Grid.Row="3" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="FirstObjectsShortCPAText" Content="CPA 1: "  Padding="0" Grid.Row="4" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="FirstObjectsLongHeadingText" Content="Heading 3: "  Padding="0" Grid.Row="5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="FirstObjectsLongSpeedText" Content="Speed 3: "  Padding="0" Grid.Row="6" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="FirstObjectsLongTCPAText" Content="TCPA 3: "  Padding="0" Grid.Row="7" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="FirstObjectsLongCPAText" Content="CPA 3: "  Padding="0" Grid.Row="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+
+                    </Grid>
+
+                    <Button x:Name="FirstObjectUpChangeButton" Content="UP" FontSize="32" Grid.Column="1" Grid.Row="0" Click="FirstObjectUpChangeButton_Click" Background="BlanchedAlmond"/>
+                    <Button x:Name="FirstObjectDownChangeButton" Content="DOWN" FontSize="32" Grid.Column="1" Grid.Row="1" Click="FirstObjectDownChangeButton_Click" Background="BlanchedAlmond"/>
+                </Grid>
+
+                <Grid x:Name="SecondObjectData" Grid.Column="1" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="SecondObjectDataDockPanel" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="10,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="SecondObjectsInfoText" Content="Object - ID " Padding="0" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="SecondObjectsShortHeadingText" Content="Heading 1: " Padding="0" Grid.Row="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="SecondObjectsShortSpeedText" Content="Speed 1: " Padding="0" Grid.Row="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="SecondObjectsShortTCPAText" Content="TCPA 1: " Padding="0" Grid.Row="3" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="SecondObjectsShortCPAText" Content="CPA 1: " Padding="0" Grid.Row="4" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="SecondObjectsLongHeadingText" Content="Heading 3: " Padding="0" Grid.Row="5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="SecondObjectsLongSpeedText" Content="Speed 3: " Padding="0" Grid.Row="6" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="SecondObjectsLongTCPAText" Content="TCPA 3: " Padding="0" Grid.Row="7" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+                        <Label x:Name="SecondObjectsLongCPAText" Content="CPA 3: " Padding="0" Grid.Row="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" Background="White"/>
+
+                    </Grid>
+
+                    <Button x:Name="SecondObjectUpChangeButton" Content="UP" FontSize="32" Grid.Column="1" Grid.Row="0" Click="SecondObjectUpChangeButton_Click" Background="BlanchedAlmond"/>
+                    <Button x:Name="SecondObjectDownChangeButton" Content="DOWN" FontSize="32" Grid.Column="1" Grid.Row="1" Click="SecondObjectDownChangeButton_Click" Background="BlanchedAlmond"/>
+                </Grid>
+
+                <Grid x:Name="OwnShipData" Grid.Column="2" Background="White" Margin="10,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="OwnShipInfoText" Content="My Ship Data" Padding="0" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" FontWeight="Bold" Background="White"/>
+                    <Label x:Name="OwnShipHeadingText" Content="Heading: " Padding="0" Grid.Row="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="22" FontWeight="Bold" Background="White"/>
+                    <Label x:Name="OwnShipSpeedText" Content="Speed:  " Padding="0" Grid.Row="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="22" FontWeight="Bold" Background="White"/>
+                    <Label x:Name="OwnShipLATText" Content="Position X:    " Padding="0" Grid.Row="3" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="22" FontWeight="Bold" Background="White"/>
+                    <Label x:Name="OwnShipLONText" Content="Position Y:    " Padding="0" Grid.Row="4" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="22" FontWeight="Bold" Background="White"/>
+                </Grid>
+                
+            </Grid>
+
+        </Grid>
+
+
+        <Grid x:Name="Map_Grid" PreviewMouseMove="Map_Grid_PreviewMouseMove">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="AddShipPanel" Grid.Row="1" Background="AliceBlue">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="65"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="AddShipPositionXTextBlock" Text="Position X:" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+                <TextBlock x:Name="AddShipPositionYTextBlock" Text="Position Y:" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Grid.Column="2"/>
+                <TextBlock x:Name="AddShipHeadingTextBlock" Text="Heading:" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Grid.Column="4"/>
+                <TextBlock x:Name="AddShipBeamTextBlock" Text="Beam:" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Grid.Column="6"/>
+                <TextBlock x:Name="AddShipLengthTextBlock" Text="Length:" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Grid.Column="8"/>
+                <TextBox x:Name="AddShipPositionXInputBox" Text="" FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1"/>
+                <TextBox x:Name="AddShipPositionYInputBox" Text="" FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" Grid.Column="3"/>
+                <TextBox x:Name="AddShipHeadingInputBox" Text="" FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" Grid.Column="5"/>
+                <TextBox x:Name="AddShipBeamInputBox" Text="" FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" Grid.Column="7"/>
+                <TextBox x:Name="AddShipLengthInputBox" Text="" FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" Grid.Column="9"/>
+
+                <Button x:Name="CreateNewShipButton" Content="NEW SHIP" Click="CreateNewShipButton_Clicked" FontWeight="Bold" FontSize="24" VerticalContentAlignment="Center" Grid.Column="10" Background="Coral"/>
+
+            </Grid>
+
+
+            <ScrollViewer x:Name="MapScroll" HorizontalScrollBarVisibility="Visible" Panel.ZIndex="0" Background="#FFE2DA14" Grid.Row="0">
+                <Grid x:Name="Map" PreviewMouseWheel="Map_PreviewMouseWheel" MouseLeftButtonDown="Map_MouseLeftButtonDown" Background="Aqua" MouseLeave="Map_MouseLeave" MouseLeftButtonUp="Map_MouseLeftButtonUp" MouseMove="Map_MouseMove" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1320" Height="1010">
+                    
+                    
+                </Grid>
+                
+            </ScrollViewer>
+            <Grid x:Name="Ships" PreviewMouseWheel="Ships_PreviewMouseWheel" Panel.ZIndex="0" MouseLeave="Ships_MouseLeave" Grid.Row="0">
+            </Grid>
+            
+            <Line x:Name="ScaleLine" StrokeThickness="4" Y1="930" X1="20" Y2="930" X2="580" Panel.ZIndex="2" Stroke="Black"/>
+            <TextBlock x:Name="ScaleLabel" Text="10 m" Margin="220,0,0,50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="20" Width="160" TextAlignment="Center" Padding="0" FontSize="18" FontWeight="Bold"/>
+            
+
+            <Grid x:Name="ShipInfoGrid" Height="100" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Background="AliceBlue" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="PositionXTextBlock" Text="Position X:" Grid.Column="0" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                <TextBlock x:Name="PositionYTextBlock" Text="Position Y:" Grid.Column="0" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                <TextBlock x:Name="SpeedTextBlock" Text="Speed:" Grid.Column="0" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                <TextBlock x:Name="HeadingTextBlock" Text="Heading:" Grid.Column="0" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+
+                <TextBlock x:Name="PositionXValueTextBlock" Text="Value" Grid.Column="1" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                <TextBlock x:Name="PositionYValueTextBlock" Text="Value" Grid.Column="1" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                <TextBlock x:Name="SpeedValueTextBlock" Text="Value" Grid.Column="1" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                <TextBlock x:Name="HeadingValueTextBlock" Text="Value" Grid.Column="1" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+
+
+
+            </Grid>
+
+            <Grid x:Name="MousePositionInfoGrid" Height="50" Width="300" HorizontalAlignment="Right" VerticalAlignment="Bottom" Panel.ZIndex="1" Background="AliceBlue" Grid.Row="0"
+                  Margin="0,0,17,17">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="MousePositionInfoTextBlock" Text="Cursor Position" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                <TextBlock x:Name="MousePositionXTextBlock" Text="Position X:" Grid.Column="0" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                <TextBlock x:Name="MousePositionYTextBlock" Text="Position Y:" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                <TextBlock x:Name="MousePositionXValueTextBlock" Text="" Grid.Column="1" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                <TextBlock x:Name="MousePositionYValueTextBlock" Text="" Grid.Column="3" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+             
+            </Grid>
+            
+        </Grid>
+
+
+    </DockPanel>
+
+
+</Page>

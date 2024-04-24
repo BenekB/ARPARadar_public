@@ -1,0 +1,88 @@
+﻿<Page x:Name="Strona" x:Class="Radar.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Radar"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page1" ScrollViewer.HorizontalScrollBarVisibility="Visible" MouseLeftButtonDown="Strona_MouseLeftButtonDown" PreviewMouseLeftButtonDown="Strona_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Strona_PreviewMouseLeftButtonUp" Width="1920" Height="1080">
+
+
+
+    <DockPanel x:Name="DockPanel" HorizontalAlignment="Center" Height="448" LastChildFill="False" Margin="0,-2,0,0" VerticalAlignment="Top" Width="798" Background="#FFF31F1F" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown" PreviewMouseLeftButtonDown="DockPanel_PreviewMouseLeftButtonDown">
+
+
+
+        <ScrollViewer x:Name="ScrollVIewer" HorizontalScrollBarVisibility="Hidden" PreviewMouseWheel="HandleMouseWheel" Width="539" MouseLeftButtonDown="ScrollVIewer_MouseLeftButtonDown" PreviewMouseLeftButtonDown="ScrollVIewer_PreviewMouseLeftButtonDown" PreviewMouseMove="ScrollVIewer_PreviewMouseMove" MouseLeave="ScrollVIewer_MouseLeave" VerticalScrollBarVisibility="Hidden">
+            <ScrollViewer.Background>
+                <SolidColorBrush Color="Black" Opacity="0"/>
+            </ScrollViewer.Background>
+
+
+
+            <Grid x:Name="Panel" RenderTransformOrigin="0.488,0.503" ScrollViewer.HorizontalScrollBarVisibility="Visible" Height="448" Width="538" MouseLeftButtonDown="Panel_MouseLeftButtonDown" PreviewMouseLeftButtonDown="Panel_PreviewMouseLeftButtonDown">
+                <Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity="0"/>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid x:Name="Ships">
+                    <TextBox x:Name="Text" HorizontalAlignment="Left" Height="62" Margin="282,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="162" Grid.IsSharedSizeScope="True" BorderBrush="#FF0A3FE0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" RenderTransformOrigin="0.5,0.5" PreviewMouseLeftButtonDown="Text_PreviewMouseLeftButtonDown" MouseLeftButtonDown="Text_MouseLeftButtonDown">
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1.0"/>
+                                <SkewTransform AngleX="0"/>
+                                <RotateTransform Angle="35.553"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+                    </TextBox>
+                    <Path x:Name="Ship" Data="M304.45987,214.56061 L301.79849,450.25154 227.18888,454.14037 222.75622,219.99957 256.59206,156.71183 z" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="299" Margin="275,127,0,0" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="69"/>
+                </Grid>
+                <ScrollViewer x:Name="Scroll2">
+                    <Grid x:Name="Main" Height="448" Width="537">
+                        <Rectangle Height="100" Stroke="Black" Width="100" Margin="355,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Polygon x:Name="Poli" Points="10,110 60,10 110,110" Fill="Blue" />
+                        <Ellipse HorizontalAlignment="Left" Height="54" Margin="89,304,0,0" Stroke="Black" VerticalAlignment="Top" Width="356"/>
+                        <Line
+            X2="100"
+            Stroke="Black" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" MinWidth="2" MinHeight="4" X1="100" Y1="100" Margin="0,0,-1,0" >
+                            <Line.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Line.RenderTransform>
+                        </Line>
+                        <Path Data="M130,135 L129,286" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="152" Margin="129,222,0,0" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="2"/>
+                        <Ellipse x:Name="Elipsa" HorizontalAlignment="Left" Margin="109,92,0,230" Stroke="Black" Width="160"/>
+                        <Path x:Name="Tick" Data="M535.5,385.05 L535.5,389.05" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="81" Margin="542,241,0,0" Stroke="Black" Stretch="Fill" VerticalAlignment="Top" Width="1" RenderTransformOrigin="0.5,0">
+                            <Path.RenderTransform>
+                                <RotateTransform Angle="0"/>
+                            </Path.RenderTransform>
+                            <Path.Triggers>
+                                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimation x:Name="Animacja" 
+                                Storyboard.TargetProperty="RenderTransform.Angle" From="0" To="360" 
+                                Duration="0:0:10" BeginTime="0:0:0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Path.Triggers>
+
+                        </Path>
+                        <Ellipse HorizontalAlignment="Center" Height="15" Margin="0,20,0,0" Stroke="Black" VerticalAlignment="Top" Width="374"/>
+                    </Grid>
+                </ScrollViewer>
+
+
+            </Grid>
+        </ScrollViewer>
+    </DockPanel>
+</Page>

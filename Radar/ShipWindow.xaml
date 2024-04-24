@@ -1,0 +1,93 @@
+﻿<Window x:Name="window" x:Class="Radar.ShipWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Radar"
+        mc:Ignorable="d"
+        Title="ShipWindow" WindowStyle="None"  MouseLeave="window_MouseLeave" 
+        Top="100" Left="100" Deactivated="window_Deactivated" ResizeMode="NoResize"
+        Height="200" Width="300">
+    <Grid x:Name="MainGrid" Margin="0,0,0,0" Background="#FF07C86C">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="SpeedText" Text="Speed [kt]" TextWrapping="Wrap"  FontFamily="Arial Black" FontSize="16" 
+                Grid.Column="0" Grid.Row="3"
+                TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
+        <TextBlock x:Name="HeadingText" TextWrapping="Wrap" Text="Heading [*]" FontFamily="Arial Black" FontSize="16" 
+                Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TextBlock x:Name="RoTText" TextWrapping="Wrap" Text="Rate of Turn  [*/min]" FontFamily="Arial Black" FontSize="16" 
+                Grid.Column="0" Grid.Row="2"
+                TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      
+        <TextBlock x:Name="RoSText" TextWrapping="Wrap" Text="Rate of Speed  [kt/min]" FontFamily="Arial Black" FontSize="16" 
+                Grid.Column="0" Grid.Row="4"
+                TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
+        <TextBlock x:Name="InfoText" TextWrapping="Wrap" Text="CHANGES WILL BE APPLIED AFTER WINDOW CLOSING" FontFamily="Arial Black" FontSize="16" 
+                Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4"
+                TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
+        
+        <TextBox x:Name="SpeedInputBox" Text="3.0" TextAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold"
+                Grid.Column="2" Grid.Row="3" TextWrapping="Wrap" KeyDown="SpeedInputBox_KeyDown" />
+        
+        <TextBox x:Name="RoTInputBox" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold"
+                Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" KeyDown="RoTInputBox_KeyDown" />
+        
+        <TextBox x:Name="HeadingInputBox" Text="133.0" TextAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold"
+                Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" KeyDown="HeadingInputBox_KeyDown"  />
+        
+        <TextBox x:Name="RoSInputBox" Text="10" TextAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold"
+                Grid.Column="2" Grid.Row="4" KeyDown="RoSInputBox_KeyDown"/>
+        
+
+        <Button x:Name="HeadingPlus10Button" Content="+10" FontSize="14" FontWeight="Bold"
+                Grid.Column="3" Grid.Row="1" Click="HeadingPlus10Button_Click"/>
+        
+        <Button x:Name="HeadingPlus1Button" Content="+1" FontSize="14" FontWeight="Bold"
+                Grid.Column="3" Grid.Row="0" Click="HeadingPlus1Button_Click"/>
+        
+        <Button x:Name="HeadingMinus10Button" Content="-10" FontSize="14" FontWeight="Bold"
+                Grid.Column="1" Grid.Row="1" Click="HeadingMinus10Button_Click"/>
+        
+        <Button x:Name="HeadingMinus1Button" Content="-1" FontSize="14" FontWeight="Bold"
+                Grid.Column="1" Grid.Row="0" Click="HeadingMinus1Button_Click"/>
+        
+        <Button x:Name="SpeedPlus1Button" Content="+1" FontSize="14" FontWeight="Bold"
+                Grid.Column="3" Grid.Row="3" Click="SpeedPlus1Button_Click"/>
+        
+        <Button x:Name="SpeedMinus1Button" Content="-1" FontSize="14" FontWeight="Bold"
+                Grid.Column="1" Grid.Row="3" Click="SpeedMinus1Button_Click"/>
+
+        <Button x:Name="RoTPlus1Button" Content="+1" FontSize="14" FontWeight="Bold"
+                Grid.Column="3" Grid.Row="2" Click="RoTPlus1Button_Click"/>
+
+        <Button x:Name="RoTMinus1Button" Content="-1" FontSize="14" FontWeight="Bold"
+                Grid.Column="1" Grid.Row="2" Click="RoTMinus1Button_Click"/>
+
+        <Button x:Name="RoSPlus1Button" Content="+1" FontSize="14" FontWeight="Bold"
+                Grid.Column="3" Grid.Row="4" Click="RoSPlus1Button_Click"/>
+
+        <Button x:Name="RoSMinus1Button" Content="-1" FontSize="14" FontWeight="Bold"
+                Grid.Column="1" Grid.Row="4" Click="RoSMinus1Button_Click"/>
+
+
+    </Grid>
+</Window>
